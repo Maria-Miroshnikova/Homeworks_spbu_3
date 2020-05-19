@@ -2,7 +2,7 @@
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace hw_1.Test
+namespace Hw_1.Test
 {
     [TestClass]
     public class LazyTest

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace hw_1
+namespace Hw_1
 {
     /// <summary>
     /// Class Lazy which does not guarantee correct work in many threads case;
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     class Lazy<T> : ILazy<T>
     {
         private Func<T> supplier;
@@ -17,11 +15,12 @@ namespace hw_1
 
         public Lazy(Func<T> supplier)
         {
-            this.supplier = supplier;
             if (supplier == null)
             {
                 throw new ArgumentNullException();
             }
+
+            this.supplier = supplier;
         }
 
         /// <summary>
@@ -33,6 +32,7 @@ namespace hw_1
             if (!isCreated)
             {
                 result = supplier();
+                supplier = null;
                 isCreated = true;
             }
 

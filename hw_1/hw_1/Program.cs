@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace hw_1
+﻿
+namespace Hw_1
 {
     class Program
     {

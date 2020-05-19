@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace hw_1
+namespace Hw_1
 {
     /// <summary>
     /// Class Lazy which guarantees correct work in many threads case;
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     class ThreadSafeLazy<T> : ILazy<T>
     {
         private Func<T> supplier;
@@ -32,13 +30,10 @@ namespace hw_1
         /// </summary>
         public T Get()
         {
-            lock (locker)
+            if (!isCreated)
             {
-                if (!isCreated)
-                {
-                    result = supplier();
-                    isCreated = true;
-                }
+                result = supplier();
+                isCreated = true;
             }
 
             return result;
